@@ -73,7 +73,7 @@ class auth_login extends alt_auth_base
 	 *	@param pointer &$newvals - pointer to array to accept other data read from database
 	 *	@param boolean $connect_only - TRUE to simply connect to the database
 	 *
-	 *	@return integer result (AUTH_xxxx)
+	 *	@return int result (AUTH_xxxx)
 	 *
 	 *	On a successful login, &$newvals array is filled with the requested data from the server
 	 */
@@ -81,7 +81,7 @@ class auth_login extends alt_auth_base
 	{
 		/* Begin - Deltik's PDO Workaround (part 1/2) */
 	//	$dsn = 'mysql:dbname=' . $this->conf['otherdb_database'] . ';host=' . $this->conf['otherdb_server'];
-		$dsn = "mysql:host=".$this->conf['otherdb_server'].";port=".varset($this->conf['otherdb_port'],3306).";dbname=".$this->conf['otherdb_database'];
+		$dsn = "mysql:host=".$this->conf['otherdb_server'].";port=".varset($this->conf['otherdb_port'],3306).";dbname=".$this->conf['otherdb_database'].";charset=".(new db_verify())->getIntendedCharset();
 
 
 		try

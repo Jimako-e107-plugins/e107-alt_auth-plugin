@@ -13,7 +13,4 @@
 		<pref name="auth_method2">0</pref>
 		<pref name="auth_extended"></pref>
 	</mainPrefs>
-	   <screenshots>
-		<image>images/alt_auth.jpg</image>
-	</screenshots>
 </e107Plugin>

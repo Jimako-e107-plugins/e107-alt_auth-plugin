@@ -94,7 +94,8 @@ class alt_auth_admin extends alt_auth_base
 	public function alt_auth_get_dropdown($name, $curval = '', $options = '')
 	{
 		$optList = explode(',', $options);
-		$authList = array_merge($optList, self::alt_auth_get_authlist(FALSE));
+		$authList = array_merge($optList, self::alt_auth_get_authlist());
+		$authList = array_unique($authList);
 		$ret = "<select class='tbox' name='{$name}'>\n";
 		foreach ($authList as $v)
 		{
@@ -389,13 +390,13 @@ class alt_auth_admin extends alt_auth_base
 			e107::getDebug()->log('Loading: alt_auth/'.$prefix.'_auth.php');
 
 			$_login = new auth_login;
-			$log_result = AUTH_UNKNOWN;
+			$log_result = defset('AUTH_UNKNOWN');
 			$pass_vars = array();
 			$val_name = trim(varset($_POST['nametovalidate']));
 
 			if(isset($_login->Available) && ($_login->Available === FALSE))
 			{	// Relevant auth method not available (e.g. PHP extension not loaded)
-				$log_result = AUTH_NOT_AVAILABLE;
+				$log_result = defset('AUTH_NOT_AVAILABLE');
 			}
 			else
 			{

@@ -73,7 +73,7 @@ class auth_login extends alt_auth_base
 	 *	@param pointer &$newvals - pointer to array to accept other data read from database
 	 *	@param boolean $connect_only - TRUE to simply connect to the database
 	 *
-	 *	@return integer result (AUTH_xxxx)
+	 *	@return int result (AUTH_xxxx)
 	 *
 	 *	On a successful login, &$newvals array is filled with the requested data from the server
 	 */
@@ -98,7 +98,7 @@ class auth_login extends alt_auth_base
 	  */
 
 	//	$dsn = 'mysql:dbname=' . $this->conf['e107db_database'] . ';host=' . $this->conf['e107db_server'];
-		$dsn = "mysql:host=".$this->conf['e107db_server'].";port=".varset($this->conf['e107db_port'],3306).";dbname=".$this->conf['e107db_database'];
+		$dsn = "mysql:host=".$this->conf['e107db_server'].";port=".varset($this->conf['e107db_port'],3306).";dbname=".$this->conf['e107db_database'].";charset=".(new db_verify())->getIntendedCharset();
 
 		try
 		{
