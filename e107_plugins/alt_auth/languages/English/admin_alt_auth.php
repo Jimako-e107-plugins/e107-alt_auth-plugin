@@ -102,6 +102,7 @@ return [
     'LAN_ALT_78' => "Failed password action",
     'LAN_ALT_79' => "If user exists in primary DB, but enters an incorrect password, how should that be handled?",
     'LAN_ALT_80' => "Port:",
+    'LAN_ALT_81' => "Create missing users in the authentication source on login",
     'IMPORTDB_LAN_2' => "Plain Text",
     'IMPORTDB_LAN_3' => "Joomla salted",
     'IMPORTDB_LAN_4' => "Mambo salted",
@@ -119,7 +120,8 @@ return [
     'LAN_ALT_AUTH_HELP' => "These are the settings common to all authentication methods, and determine the actions to be taken<br /><br />
 	The Extended User Field selection determines which <i>may</i> be added/updated when a user logs in - further configuration is required
 
-for the specific authentication method.",
+for the specific authentication method.<br /><br />
+	When outbound user creation is enabled, an e107 user that is missing from the external authentication source is created there on login. Outbound user creation is currently supported for the 'otherdb' backend only; the account is created with a random, unusable password until it is reset.",
     'LAN_ALT_VALIDATE_HELP' => "You can check the settings by using the 'Test Database Access' section to try and validate a user - this uses exactly
 	the same process as when a user tries to log in, and confirms whether your settings are correct.<br />
 

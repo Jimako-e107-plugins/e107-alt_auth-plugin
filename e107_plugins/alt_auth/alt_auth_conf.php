@@ -53,6 +53,7 @@ if(isset($_POST['updateprefs']))
 	$temp['auth_noconn'] = intval($_POST['auth_noconn']);
 	$temp['auth_method2'] = $tp->toDB($_POST['auth_method2']);
 	$temp['auth_badpassword'] = intval($_POST['auth_badpassword']);
+	$temp['auth_signup'] = intval($_POST['auth_signup']);
 	if ($admin_log->logArrayDiffs($temp, $pref, 'AUTH_01'))
 	{
 		e107::getConfig('core')->setPref($temp)->save(false);
@@ -81,6 +82,7 @@ if(isset($_POST['updateeufs']))
 // Avoid need for lots of checks later
 if (!isset($pref['auth_badpassword'])) $pref['auth_badpassword'] = 0;
 if (!isset($pref['auth_noconn'])) $pref['auth_noconn'] = 0;
+if (!isset($pref['auth_signup'])) $pref['auth_signup'] = 0;
 
 // Convert prefs
 if (isset($pref['auth_nouser']))
@@ -184,6 +186,18 @@ $text .= "<option value='1' {$sel} >".LAN_ALT_FALLBACK."</option>
 </td>
 <td>".$altAuthAdmin->alt_auth_get_dropdown('auth_method2', varset($pref['auth_method2']), 'none')."
 <div class='smalltext field-help'>".LAN_ALT_9."</div>
+</td>
+</tr>
+
+<tr>
+<td>".LAN_ALT_81.":<br /></td>
+<td>
+<select class='tbox' name='auth_signup'>";
+$sel = (!$pref['auth_signup'] ? " selected = 'selected' " : '');
+$text .= "<option value='0' {$sel} >".LAN_NO."</option>";
+$sel = ($pref['auth_signup'] ? " selected = 'selected' " : '');
+$text .= "<option value='1' {$sel} >".LAN_YES."</option>
+</select>
 </td>
 </tr>
 </table>
